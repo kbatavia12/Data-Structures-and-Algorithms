@@ -114,7 +114,6 @@ void deleteNodeAtGivenPosition(ListNode* &head, int pos) {
 
     delete temp->next; //Free up the memory
     
-
 }
 
 void deleteLinkedList(ListNode* &head) {
@@ -159,11 +158,11 @@ int getLengthRecursive(ListNode* head) {
 bool isPresentInList(ListNode* head, int x) {
         ListNode* temp = head;
 
-        if (head == NULL) return 0;
+        if (head == NULL) return 0; //Return 0 if there is no element in the list
 
         while(temp != NULL) {
             if (temp->data == x) {
-                return 1;
+                return 1; //Return true if data matches
             }
             temp = temp->next;
         }
@@ -172,15 +171,15 @@ bool isPresentInList(ListNode* head, int x) {
 }
 
 int getNthNode(ListNode* head, int index) {
-    int count = 0;
+    int count = 0; //Initialize the position counter
     ListNode*temp = head;
 
     while(temp != NULL) {
         if (count == index) {
-            return temp->data;
+            return temp->data; //Return the data in the list when we reach the position
         }
         temp = temp->next;
-        ++count;
+        ++count; //Increment the count after each traversal
     }
 
     return 0;
@@ -190,9 +189,61 @@ int getNthNode(ListNode* head, int index) {
 int getNthNodeRecursive(ListNode* head, int index) {
     int count = 0;
     ListNode* temp = head;
-    if (count == index) return temp->data;
-    else return getNthNodeRecursive(temp->next, index-1);
+    if (count == index) return temp->data; //Return the data if we get the node
+    else return getNthNodeRecursive(temp->next, index-1); //Recursively call the function with the next node and the position - 1
 
+}
+
+int getMiddleOfLinkedList(ListNode* head) {
+    ListNode* slow = head; //Will increment by 1
+    ListNode* fast = head; //Will increment by 2
+
+    //The main idea is that when the fast pointer moves twice as fast the slow pointer, when the fast pointer reaches the end, the slow pointer reaches the middle
+
+    if (head != NULL) {
+        while(fast != NULL && fast->next != NULL) {
+            fast = fast->next->next; //Skip a node always
+            slow = slow->next; 
+        }
+    }
+
+    return slow->data; //Return the data of the slow pointer
+
+}
+
+int countNumberOfOccurences(ListNode* head, int value) {
+    int count = 0;
+
+    while(head != NULL) {
+        if (head->data == value) {
+            ++count;
+        }
+        head = head->next;
+    }
+
+    return count;
+
+}
+
+//TODO Finish the cycle program
+bool detectCycle(ListNode* head) {
+
+}
+
+int getNthNodeValueFromLast(ListNode* head, int pos) {
+    ListNode* reference = head;
+    ListNode* main = head;
+
+    for(int i = 0; i < pos;i++) {
+        reference = reference->next;
+    }
+
+    while(reference!=NULL) {
+        main = main->next;
+        reference = reference->next;
+    }
+
+    return main->data;
 }
 
 
@@ -209,6 +260,9 @@ int main() {
     
     //Insert a node at the start of the linked list
     insertNodeAtHead(head, 0);
+    insertNodeAtHead(head, 1);
+    insertNodeAtHead(head, 1);
+    insertNodeAtHead(head, 1);
 
     //Insert a node in between
     insertAfterGivenNode(second, 5);
@@ -241,6 +295,14 @@ int main() {
     cout << getNthNode(head,2) << endl;
     cout << getNthNodeRecursive(head,3) << endl;
 
+    //Get the middle element of the linked list
+    cout << getMiddleOfLinkedList(head) << endl;
+
+    //Number of occurences of 1 in list
+    cout << countNumberOfOccurences(head, 1) << endl;
+
+
+    cout << getNthNodeValueFromLast(head, 3) << endl;
 
     //Print the list
     printLinkedList(head);
