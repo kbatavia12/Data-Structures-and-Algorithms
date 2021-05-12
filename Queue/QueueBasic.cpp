@@ -68,6 +68,55 @@ public:
     }
 };
 
+class Node {
+    
+    public:
+
+    int data;
+    Node* next;
+
+    Node(int val) {
+        data = val;
+        next = NULL;
+    }
+};
+
+class LinkedListQueue {
+    public:
+        Node* front, *rear;
+        LinkedListQueue() {
+            front = rear = NULL;
+        }
+
+        void enqueue(int x) {
+            Node* newNode = new Node(x);
+            
+            if (rear == NULL) {
+                front = rear = newNode;
+                return;
+            }
+            
+            rear->next = newNode;
+            rear = rear->next;
+            rear->next = NULL;
+        }
+
+        void dequeue() {
+            
+            if (front == NULL) return;
+
+            Node* toDelete = front;
+            front = front->next;
+            if (front == NULL) rear = NULL;
+            delete (toDelete);
+        }
+
+
+        
+
+};
+
+
 //Implementing Queue using 2 stacks
 //https://www.hackerrank.com/challenges/ctci-queue-using-two-stacks/problem?h_r=internal-search
 class MyQueue
@@ -166,29 +215,22 @@ public:
 int main()
 {
 
+    //Hackerrank Challenge  Line:122
     // MyQueue* obj = new MyQueue();
-
     // obj->push(1);
     // obj->push(2);
     // obj->push(3);
-
     // cout << "Queue Front: "<< obj->front() << endl;
-
     // Solution* obj = new Solution();
-
-    // string s = "nitin";
-
+    // string s = "racecar";
     // int count = 0;
-
     // for (auto i: s) {
     //     obj->pushCharacter(i);
     //     obj->enqueueCharacter(i);
     // }
-
     // while(!obj->s1.empty() && !obj->q1.empty()) {
     //     char topChar = obj->s1.top();
     //     char frontChar = obj->q1.front();
-
     //     if (topChar == frontChar) {
     //         obj->s1.pop();
     //         obj->q1.pop();
@@ -198,24 +240,31 @@ int main()
     //         break;
     //     }
     // }
-
     // if (count == s.length()) cout << "String is a palindrome!";
+    
 
+
+    //Implementing a queue using array Line:04
     // Queue* queue = new Queue();
-
     // queue->createQueue(5);
-
     // queue->enqueue(1);
     // queue->enqueue(2);
     // queue->enqueue(3);
     // queue->enqueue(4);
-
     // cout << queue->getFront() << endl;
-
     // cout << queue->dequeue() << endl;
     // cout << queue->getFront() << endl;
 
 
+    //Implementing a queue using Linked List Line: 71, 84
+    // LinkedListQueue q;
+    // q.enqueue(10);
+    // q.enqueue(20);
+    // q.enqueue(30);
+    // q.enqueue(40);
+    // q.dequeue();
+    // cout << (q.front)->data << endl;
+    // cout << q.rear->data << endl;
 
     return 0;
 }
