@@ -1,3 +1,6 @@
 .vscode
 .bin
 .cph
+./QueueBasic.exe
+./QueueProblems.exe
+./PriorityQueue.exe
