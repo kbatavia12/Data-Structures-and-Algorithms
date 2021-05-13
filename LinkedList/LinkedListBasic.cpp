@@ -11,8 +11,6 @@ class ListNode {
         data = val; //Init the data
     }
 
-
-
 };
 
 
@@ -246,6 +244,29 @@ int getNthNodeValueFromLast(ListNode* head, int pos) {
     return main->data;
 }
 
+//Reverse a linked list using stack
+ListNode* reverseList(ListNode* &head) {
+    ListNode* temp = head; //Traversal node
+    stack<ListNode*> st; //Stack to store the nodes
+
+    while(temp->next != NULL) {
+        st.push(temp); //Push all the nodes into the stack
+        temp = temp->next;
+    }
+
+    head = temp; //Initialize head to temp to attach elements in the reverse order
+    while(!st.empty()) { 
+        temp->next = st.top(); //attach top element of the stack to the list  
+        temp = temp->next; 
+        st.pop(); //Pop the element from the stack
+    }
+
+    temp->next = NULL; //After the last element is popped, change its next pointer to NULL
+    return head; //Return the head
+
+}
+
+
 
 int main() {
     //Create nodes
@@ -306,7 +327,9 @@ int main() {
 
     //Print the list
     printLinkedList(head);
-
+    
+    reverseList(head);
+    printLinkedList(head);
 
     return 0;
 }
