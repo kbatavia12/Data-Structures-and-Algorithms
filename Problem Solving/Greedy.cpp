@@ -16,9 +16,7 @@ int minimumAbsoluteDifference(vector<int> arr) {
        
 }
 
-
-//https://www.hackerrank.com/challenges/grid-challenge/problem
-//https://www.hackerrank.com/challenges/luck-balance/problem
+//https://www.hackerrank.com/challenges/magic-square-forming/problem
 
 int main () {
     
