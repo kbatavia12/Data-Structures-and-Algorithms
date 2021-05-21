@@ -107,6 +107,7 @@ vector<int> minSubsequence(vector<int>& nums) {
 
 
 
+
 int main() {
     // vector<int> candies = {12,1,12};
     // vector<bool> ans = kidsWithCandies(candies, 10);
@@ -128,6 +129,7 @@ int main() {
     // vector<int> nums = {4,4,7,6,7};
     // vector<int> ans = minSubsequence(nums);
     // for (auto i: ans) cout << i << " ";
+
 
     return 0;
 }
