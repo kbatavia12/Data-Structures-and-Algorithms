@@ -45,14 +45,14 @@ bool howSumMemo(int target, vector<ll> nums) {
 
 
 int main() {
-    vector<ll> nums = {7,9};
+    vector<ll> nums = {7,14};
     // if (howSum(7, nums)) {
     //     for (auto i: res) {
     //         cout << i << " ";
     //     }
     // }
 
-    if (howSumMemo(659, nums)) {
+    if (howSumMemo(300, nums)) {
         for (auto i: ans) {
             cout << i << " ";
         }
