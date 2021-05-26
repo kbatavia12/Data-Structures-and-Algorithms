@@ -76,6 +76,27 @@ bool hasPathSum(TreeNode* root, int targetSum) {
 }
 
 
+//https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+TreeNode* getBST(vector<int> nums, int low, int high) {
+    if (low > high) return nullptr;
+
+    int mid = (low + high) / 2;
+
+    TreeNode* root = new TreeNode(nums[mid]);
+    
+    root->left = getBST(nums,low, mid -1);
+    root->right = getBST(nums,mid + 1, high);
+
+
+    return root;
+}
+
+TreeNode* sortedArrayToBST(vector<int> nums) {
+    int n = nums.size() -1;
+
+    return getBST(nums, 0, n);
+}
+
 int main() {
     TreeNode* root = createTree();
     TreeNode* root2 = createTree();
