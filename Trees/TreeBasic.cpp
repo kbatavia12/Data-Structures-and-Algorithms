@@ -65,6 +65,37 @@ void printPostOrder(TreeNode* root) {
     cout << root->data << " "; //Print the node data
 }
 
+//Tree traversal using stack iterative (Inorder)
+
+void inOrderStack(TreeNode* root) {
+    stack<TreeNode*> st;     //Create a stack to push the elements
+    TreeNode* current = root; //Traversal node
+
+    //Run the loop until the stack is empty or if we get a Null node
+    while(!st.empty() || current!= NULL) {
+        
+        //Push all the left nodes to the stack
+        while(current != NULL) { 
+            st.push(current);
+            current = current->left;
+        }
+
+        current = st.top(); 
+        st.pop();  //Pop the nodes from the stack
+
+        cout << current->data << " "; //Print the data
+
+        current = current->right; //Print out all the right nodes
+
+    }
+
+}
+
+
+
+
+
+
 
 int main() {
     TreeNode* root = createTree();
@@ -74,5 +105,7 @@ int main() {
     printPreOrder(root);
     cout << endl;
     printPostOrder(root);
+    cout << endl;
+    inOrderStack(root);
     cout << endl;
 }
