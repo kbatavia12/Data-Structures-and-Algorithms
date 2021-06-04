@@ -1,0 +1,1 @@
+encoded[0] ^ first

@@ -97,21 +97,30 @@ TreeNode* sortedArrayToBST(vector<int> nums) {
     return getBST(nums, 0, n);
 }
 
+
+
+
+
+
+
+
 int main() {
-    TreeNode* root = createTree();
-    TreeNode* root2 = createTree();
+    // TreeNode* root = createTree();
+    // TreeNode* root2 = createTree();
 
-    TreeNode* root3 = new TreeNode(1);
-    root3->left = new TreeNode(2);
-    root3->right = new TreeNode(3);
-    // root3->left->left = new TreeNode(4);
-    // root3->left->right = new TreeNode(5);
-    // root3->right->left = new TreeNode(6);
+    // TreeNode* root3 = new TreeNode(1);
+    // root3->left = new TreeNode(2);
+    // root3->right = new TreeNode(3);
+    // // root3->left->left = new TreeNode(4);
+    // // root3->left->right = new TreeNode(5);
+    // // root3->right->left = new TreeNode(6);
 
-    cout << isSameTree(root, root2) << endl;
-    cout << isSameTree(root3, root2) << endl;
+    // cout << isSameTree(root, root2) << endl;
+    // cout << isSameTree(root3, root2) << endl;
 
-    cout << minDepth(root3);
+    // cout << minDepth(root3);
+
+    
 
     return 0;
 }

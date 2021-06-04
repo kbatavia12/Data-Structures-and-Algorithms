@@ -245,6 +245,71 @@ bool lemonadeChange(vector<int>& bills) {
 
 }
 
+//https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing/
+int minOperations(vector<int>& nums) {
+    if (nums.size() == 1) return 0;
+    int cost = 0;
+
+    for (int i = 1; i < nums.size(); i++) {
+        if (nums[i] > nums[i - 1]) continue;
+        else {
+            int localCost = nums[i - 1] - nums[i] + 1;
+            nums[i] += localCost;
+            cost += localCost;
+        }
+    }
+
+    return cost;
+
+}
+
+
+
+
+//https://leetcode.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/
+vector<int> minOperations(string boxes) {
+    vector<int> res(boxes.size());
+
+    for (int i = 0, ops = 0, cnt = 0; i < boxes.size();i++) {
+        res[i] += (ops);
+        cnt += boxes[i] == '1' ? 1 : 0;
+        ops += cnt;
+    }
+    
+    for (int i = boxes.size() - 1, cnt = 0, ops = 0; i >= 0;i--) {
+        res[i] += (ops);
+        cnt += boxes[i] == '1' ? 1 : 0;
+        ops+= cnt;
+    }
+
+
+    return res;
+
+}
+
+vector<vector<int>> groupThePeople(vector<int>& groupSizes) {
+    vector<vector<int>> res = {};
+    unordered_map<int, vector<int>> mp{};
+
+    for (int i = 0; i < groupSizes.size(); i++) {
+        int key = groupSizes[i];
+
+        if (mp.count(key) > 0) {
+            mp[key].push_back(i);
+        } else if (mp.count(key) == 0) {
+            mp[key] = vector<int>{i};
+        } 
+
+        if (mp[key].size() == key) {
+            res.push_back(mp[key]);
+            mp.erase(key);
+        }
+    }
+
+    return res;
+
+}
+
 
 
 int main() {
@@ -303,15 +368,31 @@ int main() {
     // cout << numWaterBottles(5,5) << endl;
     // cout << numWaterBottles(2,3) << endl;
 
-    vector<int> a = {5,5,5,10,20};
-    vector<int> b = {5,5,10};
-    vector<int> c = {10,10};
-    vector<int> d = {5,5, 10 ,10,20};
+    // vector<int> a = {5,5,5,10,20};
+    // vector<int> b = {5,5,10};
+    // vector<int> c = {10,10};
+    // vector<int> d = {5,5, 10 ,10,20};
+    // cout << lemonadeChange(a) << endl;
+    // cout << lemonadeChange(b) << endl;
+    // cout << lemonadeChange(c) << endl;
+    // cout << lemonadeChange(d) << endl;
 
-    cout << lemonadeChange(a) << endl;
-    cout << lemonadeChange(b) << endl;
-    cout << lemonadeChange(c) << endl;
-    cout << lemonadeChange(d) << endl;
+    // vector<int> a = {1,1,1};
+    // vector<int> b = {1,5,2,4,1};
+    // vector<int> c = {8,1,2,5,9};
+    // cout << minOperations(a) << endl;
+    // cout << minOperations(b) << endl;
+    // cout << minOperations(c) << endl;
+
+    // vector<int> ans1 = minOperations("110");
+    vector<int> ans2 = minOperations("001011");
+
+    // for (auto i: ans1) cout << i << " ";
+    // cout << endl;
+    
+    for (auto i: ans2) cout << i << " ";
+    cout << endl;
+
 
     return 0;
 }

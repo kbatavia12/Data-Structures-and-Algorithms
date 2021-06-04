@@ -41,6 +41,28 @@ void printLinkedList(ListNode* head) {
 }
 
 
+ListNode* swapNodes(ListNode* head, int k) {
+    ListNode* temp = head;
+    int count = 1;
+
+    for (temp = head; temp != NULL; temp = temp->next) {
+        count++;
+    }
+
+    temp = head;
+    int i , j;
+    for (i = 1, j = 1; i <= k, j <= count - k; i++, j++) {
+
+    }
+
+    cout << i << ' ' <<  j;
+
+    return head;
+
+}
+
+
+
 int main() {
     ListNode* head = new ListNode(1);  
     ListNode* second = new ListNode(2);  
@@ -60,6 +82,10 @@ int main() {
     ListNode* ans = removeElements(head, 2);
 
     printLinkedList(ans);
+
+    swapNodes(head, 5);
+
+
 
 
 }
