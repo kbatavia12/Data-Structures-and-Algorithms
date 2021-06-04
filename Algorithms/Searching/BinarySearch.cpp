@@ -28,8 +28,29 @@ int binarySearch(int x, vector<int> sortedArray) {
 
 }
 
+
+
+int binarySearchRecursive(int arr[],int low, int high ,int target) {
+    if (low == high) {
+        if (arr[low] == target) return low; //base case, if low == high return the index
+        else return 0;
+    } else {
+        int mid = (low + high) / 2; //Calcaulate the mid position
+        if (target == arr[mid]) return mid; //If the target is at the mid position, return the mid position
+        if (target < arr[mid])  {
+            return binarySearchRecursive(arr,low, mid - 1 , target); //Call the binary search function for the left part of the array
+        } else{
+            return binarySearchRecursive(arr,mid + 1, high ,target); //Call the binary search function for the right part of the array
+        }
+        
+    }
+
+    return -1; //If the search does not find the element, return -1
+
+}
+
+
 int main() {
     vector<int> A = {1,2,3,4,5};
-
-    cout << binarySearch(3, A);
+    cout << binarySearch(3, A) << endl;;
 }
