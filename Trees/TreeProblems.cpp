@@ -12,16 +12,10 @@ class TreeNode {
         }
 };
 
-TreeNode* createTree() {
-    TreeNode* root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(7);
-    return root;
-}
+// TreeNode* createTree() {
+    
+//     return root;
+// }
 
 
 
@@ -100,6 +94,26 @@ TreeNode* sortedArrayToBST(vector<int> nums) {
 
 
 
+//https://leetcode.com/problems/symmetric-tree/
+bool isSymmetricHelper(TreeNode* left, TreeNode* right) {
+    if (left == NULL && right == NULL) return 1;
+    if (left == NULL || right == NULL) return 0;
+
+    if (left->data != right->data) return 0;
+
+    return isSymmetricHelper(left->left, right->right) && isSymmetricHelper(left->right, right->left);
+
+
+}
+bool isSymmetric(TreeNode* root) {
+    if (root == NULL) return 1;
+    return isSymmetricHelper(root->left, root->right);
+}
+
+
+
+
+
 
 
 
@@ -120,7 +134,18 @@ int main() {
 
     // cout << minDepth(root3);
 
-    
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
+
+    // bool ans = isSymmetric(root);
+    // cout << ans;
+
+
 
     return 0;
 }

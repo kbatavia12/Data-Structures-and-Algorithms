@@ -40,7 +40,6 @@ void printLinkedList(ListNode* head) {
     cout << endl;
 }
 
-
 ListNode* swapNodes(ListNode* head, int k) {
     ListNode* temp = head;
     int count = 1;
@@ -63,27 +62,53 @@ ListNode* swapNodes(ListNode* head, int k) {
 
 
 
+bool isPalindrome(ListNode* head) {
+    string checker = "";
+    ListNode *temp = head;
+
+    while(temp != NULL) {
+        checker += temp->data + '0';
+        temp = temp->next;
+    }
+
+    int left = 0, right = checker.size() - 1;
+    while(left <= right) {
+        if (checker[left] != checker[right]) return 0;
+        left++;
+        right--;
+    }
+
+    return 1;
+
+}
+
+
+
+
+
 int main() {
     ListNode* head = new ListNode(1);  
     ListNode* second = new ListNode(2);  
-    ListNode* third = new ListNode(3);  
-    ListNode* fourth = new ListNode(2);  
-    ListNode* fifth = new ListNode(3);  
+    ListNode* third = new ListNode(2);  
+    ListNode* fourth = new ListNode(1);  
+    // ListNode* fifth = new ListNode(3);  
     
     //Assign the links
     head->next = second;
     second->next = third;
     third->next = fourth;
-    fourth->next = fifth;
-    fifth->next = NULL;
+    fourth->next = NULL;
+    // fifth->next = NULL;
 
-    printLinkedList(head);
+    // printLinkedList(head);
 
-    ListNode* ans = removeElements(head, 2);
+    // ListNode* ans = removeElements(head, 2);
 
-    printLinkedList(ans);
+    // printLinkedList(ans);
 
-    swapNodes(head, 5);
+    // swapNodes(head, 5);
+
+    cout << isPalindrome(head) << endl;
 
 
 
